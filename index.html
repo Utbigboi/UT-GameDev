@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharakeshwar Umanand | Game Developer & Technical Artist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-cyan: #00f6ff;
+            --primary-magenta: #ff00ff;
+            --accent-purple: #9d00ff;
+            --bg-dark: #0a0a1a;
+            --bg-light: #1a1a2e;
+            --text-light: #e0e0e0;
+            --border-color: rgba(0, 246, 255, 0.3);
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            background-image: radial-gradient(circle at 1px 1px, rgba(224, 224, 224, 0.05) 1px, transparent 0);
+            background-size: 25px 25px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 8px rgba(0, 246, 255, 0.3);
+        }
+
+        .text-gradient {
+            background-image: linear-gradient(90deg, var(--primary-cyan), var(--primary-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-light);
+            color: var(--primary-cyan);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease-in-out;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--primary-cyan);
+        }
+
+        .card {
+            background-color: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 30px var(--border-color);
+            border-color: var(--primary-cyan);
+        }
+
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+            text-transform: uppercase;
+        }
+
+        .section-heading::before,
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-cyan));
+        }
+
+        .section-heading::before {
+            left: -40px;
+        }
+
+        .section-heading::after {
+            right: -40px;
+            background: linear-gradient(-90deg, transparent, var(--primary-cyan));
+        }
+
+        nav a {
+            transition: color 0.3s, text-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--primary-cyan);
+            border-radius: 50%;
+            margin-top: 8px; /* Vertically centered with heading */
+            left: -47px; /* Positioned onto the timeline bar */
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 0 10px var(--primary-cyan);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px var(--primary-cyan); }
+            50% { box-shadow: 0 0 20px var(--primary-cyan); transform: scale(1.1); }
+            100% { box-shadow: 0 0 10px var(--primary-cyan); }
+        }
+        
+        .gamer-button {
+            background: linear-gradient(45deg, var(--accent-purple), var(--primary-magenta));
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+        }
+        .gamer-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--primary-magenta);
+        }
+        
+        .gamer-button-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+            clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+        }
+        
+        .gamer-button-secondary:hover {
+            background-color: var(--primary-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-cyan);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/70 backdrop-blur-sm sticky top-0 z-50 border-b border-[var(--border-color)]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white font-['Orbitron']">Tharakeshwar Umanand</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button text-white font-medium py-2 px-4">
+                    Contact
+                </a>
+            </div>
+            <div class="md:hidden">
+                 <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button text-white font-medium py-2 px-4 text-sm">
+                    Contact
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <section id="about" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
+                Tharakeshwar Umanand
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                <span class="text-gradient">Technical Artist & Game Developer</span>
+            </h2>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
+                Passionate about bridging the gap between art and engineering. I specialize in creating robust tools, optimizing pipelines, and developing shaders to empower artists and deliver high-quality, performant game experiences.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#portfolio" class="gamer-button text-white font-bold py-3 px-8 w-full sm:w-auto">
+                    View My Work
+                </a>
+                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button-secondary font-bold py-3 px-8 w-full sm:w-auto">
+                    LinkedIn &rarr;
+                </a>
+                <a href="https://github.com/Utbigboi" target="_blank" class="gamer-button-secondary font-bold py-3 px-8 w-full sm:w-auto">
+                    GitHub &rarr;
+                </a>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 md:py-24">
+            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
+
+                <!-- Project: The Last of Us Part I -->
+                <div class="card">
+                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=The+Last+of+Us+Part+I" alt="The Last of Us Part I" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">The Last of Us Part I</h3>
+                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Technical Artist @ PlayStation (Visual Arts)</p>
+                        <p class="text-gray-300">
+                            Contributed to the PS5 remake by developing and maintaining shaders, optimizing performance, and creating pipeline tools. Worked closely with artists to enhance workflows and ensure visual fidelity on next-gen hardware.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project: Diablo IV -->
+                <div class="card">
+                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=Diablo+IV" alt="Diablo IV" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">Diablo IV</h3>
+                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Build and Pipeline TD @ Blizzard Entertainment</p>
+                        <p class="text-gray-300">
+                            Managed and stabilized game builds for a large, cross-functional team. Developed and maintained crucial pipeline tools using Python and C#, and managed the Jenkins-based build system to ensure a smooth development process.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project: NASA VR Project -->
+                <div class="card">
+                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=NASA+VR+Project" alt="NASA VR Project" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">NASA Hybrid Reality System</h3>
+                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Technical Artist @ Carnegie Mellon ETC</p>
+                        <p class="text-gray-300">
+                            Developed a VR training simulation for future astronauts in Unreal Engine 4. Focused on creating realistic materials, shaders, and immersive environments using tools like Substance Painter and Maya.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project: EA Project PAI -->
+                <div class="card">
+                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=Project+PAI" alt="Project PAI" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">Project PAI (with Electronic Arts)</h3>
+                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Lead Engineer @ Carnegie Mellon ETC</p>
+                        <p class="text-gray-300">
+                            Led engineering for a game prototype in Unity. Designed and implemented core gameplay mechanics, AI behaviors, and developed custom editor tools to accelerate design and iteration for the team.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24">
+            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Technical Arsenal</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Languages & Shaders</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">Python</span><span class="skill-tag">C#</span><span class="skill-tag">C++</span><span class="skill-tag">HLSL</span><span class="skill-tag">GLSL</span><span class="skill-tag">MEL</span>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Game Engines & Tools</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">Unreal Engine</span><span class="skill-tag">Unity</span><span class="skill-tag">Jenkins</span><span class="skill-tag">Perforce</span><span class="skill-tag">Git</span><span class="skill-tag">ShotGrid</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Digital Content Creation (DCC)</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">Maya</span><span class="skill-tag">Houdini</span><span class="skill-tag">Substance Painter</span><span class="skill-tag">Substance Designer</span><span class="skill-tag">ZBrush</span><span class="skill-tag">Photoshop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-16 md:py-24">
+            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Career & Education</h2>
+            <div class="max-w-3xl mx-auto space-y-12 relative border-l-2 border-[var(--border-color)] pl-10">
+                <!-- PlayStation -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Technical Artist</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">-------</p>
+                    <p class="text-sm text-gray-500">Jul 2021 - Present</p>
+                    <p class="mt-2 text-gray-300">Developing and maintaining shaders using HLSL for "The Last of Us Part I". Creating pipeline and DCC tools in Maya with Python/MEL to improve artist workflows. Profiling and optimizing game content to meet performance targets on the PS5.</p>
+                </div>
+
+                <!-- Blizzard -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Build and Pipeline TD</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Blizzard Entertainment</p>
+                    <p class="text-sm text-gray-500">Jan 2021 - Apr 2021</p>
+                    <p class="mt-2 text-gray-300">As a key contributor to "Diablo IV", stabilized game builds, developed crucial pipeline tools using Python and C#, and managed the Jenkins build system to ensure a smooth development process for a large cross-functional team.</p>
+                </div>
+
+                <!-- CMU Project Engineer (EA) -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Project Engineer (with EA)</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
+                    <p class="text-sm text-gray-500">Jan 2020 - May 2020</p>
+                    <p class="mt-2 text-gray-300">Led engineering for 'Project PAI', a game prototype in Unity. Implemented core gameplay mechanics, AI behaviors, and developed custom editor tools to accelerate design and iteration.</p>
+                </div>
+                
+                <!-- CMU Technical Artist (NASA) -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Technical Artist (with NASA)</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
+                    <p class="text-sm text-gray-500">Aug 2019 - Dec 2019</p>
+                    <p class="mt-2 text-gray-300">Developed a VR training simulation in Unreal Engine 4 for the NASA Hybrid Reality System. Focused on creating realistic materials and shaders for immersive astronaut training.</p>
+                </div>
+
+                <!-- Carnegie Mellon -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Master of Entertainment Technology</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
+                    <p class="text-sm text-gray-500">2019 - 2021</p>
+                    <p class="mt-2 text-gray-300">Specialized in the Technical Artist track, gaining hands-on experience through industry-sponsored projects with partners like EA and NASA.</p>
+                </div>
+                
+                <!-- NIT Research Intern -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Research Intern</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">National Institute of Technology, Tiruchirappalli</p>
+                    <p class="text-sm text-gray-500">May 2018 - Jul 2018</p>
+                    <p class="mt-2 text-gray-300">Conducted research on mobile robotics, programming path-planning algorithms using C++ and the Robot Operating System (ROS).</p>
+                </div>
+
+                <!-- National Institute of Technology -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Bachelor of Technology</h3>
+                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">National Institute of Technology, Tiruchirappalli</p>
+                    <p class="text-sm text-gray-500">2015 - 2019</p>
+                    <p class="mt-2 text-gray-300">Completed a B.Tech in Instrumentation and Control Engineering, establishing a strong foundation in core engineering principles and robotics.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[var(--border-color)]">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2024 Tharakeshwar Umanand. All rights reserved.</p>
+            <p class="mt-2">Built with passion and code. Feel free to connect!</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                 <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="text-gray-400 hover:text-[var(--primary-cyan)] transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                 </a>
+                 <a href="https://github.com/Utbigboi" target="_blank" class="text-gray-400 hover:text-[var(--primary-cyan)] transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.222.687.825.577C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/></svg>
+                 </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
