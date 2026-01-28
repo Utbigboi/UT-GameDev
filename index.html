@@ -3,361 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tharakeshwar Umanand | Game Developer & Technical Artist</title>
+    <title>Tharakeshwar Umanand | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Fonts for both themes -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-cyan: #00f6ff;
-            --primary-magenta: #ff00ff;
-            --accent-purple: #9d00ff;
-            --bg-dark: #0a0a1a;
-            --bg-light: #1a1a2e;
-            --text-light: #e0e0e0;
-            --border-color: rgba(0, 246, 255, 0.3);
+            /* Souls Theme Variables */
+            --primary: #c5a059; /* Gold */
+            --accent: #ff4500;  /* Fire */
+            --bg-deep: #050505;
+            --text-main: #d1c7a7;
+            --border: #2a2a2a;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Crimson Text', serif;
+        }
+
+        body.pro-mode {
+            /* Professional Theme Variables */
+            --primary: #38bdf8; /* Cyan-400 */
+            --accent: #818cf8;  /* Indigo-400 */
+            --bg-deep: #0f172a; /* Slate-900 */
+            --text-main: #f1f5f9;
+            --border: #1e293b;
+            --font-heading: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
         body {
-            font-family: 'Roboto Mono', monospace;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            background-image: radial-gradient(circle at 1px 1px, rgba(224, 224, 224, 0.05) 1px, transparent 0);
-            background-size: 25px 25px;
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 8px rgba(0, 246, 255, 0.3);
+        h1, h2, h3, .heading-font {
+            font-family: var(--font-heading);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        .text-gradient {
-            background-image: linear-gradient(90deg, var(--primary-cyan), var(--primary-magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+        /* Souls Theme Specifics */
+        .souls-only { display: block; }
+        .pro-only { display: none; }
+        body.pro-mode .souls-only { display: none; }
+        body.pro-mode .pro-only { display: block; }
+
+        .text-glow {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(226, 88, 34, 0.4);
         }
 
-        .skill-tag {
-            background-color: var(--bg-light);
-            color: var(--primary-cyan);
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease-in-out;
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
-        }
-
-        .skill-tag:hover {
-            background-color: var(--primary-cyan);
-            color: var(--bg-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px var(--primary-cyan);
-        }
-
-        .card {
-            background-color: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-        }
-
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 0 30px var(--border-color);
-            border-color: var(--primary-cyan);
-        }
-
-        .section-heading {
+        .themed-border {
+            border: 1px solid var(--border);
             position: relative;
-            display: inline-block;
-            padding: 0 20px;
+            background: rgba(20, 20, 20, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        body:not(.pro-mode) .themed-border {
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.9);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
+        }
+
+        body.pro-mode .themed-border {
+            border-radius: 0.75rem;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Toggle Button Styles */
+        .theme-btn {
+            background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-heading);
             text-transform: uppercase;
-        }
-
-        .section-heading::before,
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-cyan));
-        }
-
-        .section-heading::before {
-            left: -40px;
-        }
-
-        .section-heading::after {
-            right: -40px;
-            background: linear-gradient(-90deg, transparent, var(--primary-cyan));
-        }
-
-        nav a {
-            transition: color 0.3s, text-shadow 0.3s;
-            text-transform: uppercase;
+            font-size: 0.75rem;
             letter-spacing: 1px;
-            font-size: 0.875rem;
         }
 
-        nav a:hover {
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px var(--primary-cyan);
+        .theme-btn:hover {
+            box-shadow: 0 0 15px var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
         }
 
-        .timeline-dot {
+        /* Stat Bars */
+        .stat-bar-bg {
+            height: 8px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #800000, var(--accent));
+            box-shadow: 0 0 10px var(--accent);
+            transition: width 1s ease-in-out;
+        }
+        body.pro-mode .stat-bar-fill {
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            border-radius: 9999px;
+        }
+
+        /* Video Showcase */
+        .video-frame {
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s;
+        }
+        body.pro-mode .video-frame {
+            border-radius: 0.5rem;
+        }
+
+        /* Origins/Timeline */
+        .timeline-item {
+            border-left: 2px solid var(--primary);
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .timeline-item::before {
+            content: '◈';
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background-color: var(--primary-cyan);
+            left: -9px;
+            top: 0;
+            color: var(--primary);
+            background: var(--bg-deep);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        body.pro-mode .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            margin-top: 8px; /* Vertically centered with heading */
-            left: -47px; /* Positioned onto the timeline bar */
-            border: 4px solid var(--bg-light);
-            box-shadow: 0 0 10px var(--primary-cyan);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px var(--primary-cyan); }
-            50% { box-shadow: 0 0 20px var(--primary-cyan); transform: scale(1.1); }
-            100% { box-shadow: 0 0 10px var(--primary-cyan); }
-        }
-        
-        .gamer-button {
-            background: linear-gradient(45deg, var(--accent-purple), var(--primary-magenta));
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-        }
-        .gamer-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--primary-magenta);
-        }
-        
-        .gamer-button-secondary {
-            background-color: transparent;
-            border: 2px solid var(--primary-cyan);
-            color: var(--primary-cyan);
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
-            clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-        }
-        
-        .gamer-button-secondary:hover {
-            background-color: var(--primary-cyan);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--primary-cyan);
+            background: var(--primary);
+            left: -7px;
+            top: 8px;
         }
 
+        /* Theme Toggle Switch */
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body id="main-body" class="antialiased">
 
-    <!-- Header & Navigation -->
-    <header class="bg-black/70 backdrop-blur-sm sticky top-0 z-50 border-b border-[var(--border-color)]">
+    <!-- Header -->
+    <header class="bg-black/90 sticky top-0 z-50 border-b border-[var(--primary)]/20 transition-colors duration-500">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white font-['Orbitron']">Tharakeshwar Umanand</a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about">About</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button text-white font-medium py-2 px-4">
-                    Contact
-                </a>
-            </div>
-            <div class="md:hidden">
-                 <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button text-white font-medium py-2 px-4 text-sm">
-                    Contact
+            <a href="#" class="text-xl font-bold heading-font text-glow">Tharakeshwar Umanand</a>
+            
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="hidden lg:flex space-x-6 items-center heading-font text-xs">
+                    <a href="#origins" class="hover:text-[var(--primary)] transition-colors">
+                        <span class="souls-only">Origins</span>
+                        <span class="pro-only">Education</span>
+                    </a>
+                    <a href="#archives" class="hover:text-[var(--primary)] transition-colors">
+                        <span class="souls-only">The Archive</span>
+                        <span class="pro-only">Portfolio</span>
+                    </a>
+                    <a href="#attributes" class="hover:text-[var(--primary)] transition-colors">
+                        <span class="souls-only">Attributes</span>
+                        <span class="pro-only">Skills</span>
+                    </a>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="theme-btn px-3 py-1.5 flex items-center gap-2">
+                    <span id="theme-label">Professional Mode</span>
+                </button>
+
+                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="theme-btn px-4 py-1.5 hidden sm:block">
+                    <span class="souls-only">Summon</span>
+                    <span class="pro-only">Contact</span>
                 </a>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 md:py-20">
+    <main class="container mx-auto px-6 py-12">
 
         <!-- Hero Section -->
-        <section id="about" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-                Tharakeshwar Umanand
-            </h1>
-            <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                <span class="text-gradient">Technical Artist & Game Developer</span>
-            </h2>
-            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
-                Passionate about bridging the gap between art and engineering. I specialize in creating robust tools, optimizing pipelines, and developing shaders to empower artists and deliver high-quality, performant game experiences.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#portfolio" class="gamer-button text-white font-bold py-3 px-8 w-full sm:w-auto">
-                    View My Work
-                </a>
-                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="gamer-button-secondary font-bold py-3 px-8 w-full sm:w-auto">
-                    LinkedIn &rarr;
-                </a>
-                <a href="https://github.com/Utbigboi" target="_blank" class="gamer-button-secondary font-bold py-3 px-8 w-full sm:w-auto">
-                    GitHub &rarr;
-                </a>
+        <section id="about" class="text-center py-20 border-b border-[var(--primary)]/10 mb-20">
+            <h1 class="text-4xl md:text-6xl font-black mb-4 heading-font" id="hero-name">Tharakeshwar Umanand</h1>
+            <p class="text-xl italic text-gray-500 mb-8 souls-only">"Seeker of the Codex, Architect of the Unseen"</p>
+            <p class="text-xl text-gray-400 mb-8 pro-only font-light">Bridging the gap between artistic vision and technical execution.</p>
+            
+            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-glow">Game Developer & Technical Artist</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="theme-btn px-8 py-3">LinkedIn</a>
+                <a href="https://www.artstation.com/" target="_blank" class="theme-btn px-8 py-3">ArtStation</a>
+                <a href="https://github.com/Utbigboi" target="_blank" class="theme-btn px-8 py-3">GitHub</a>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-16 md:py-24">
-            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Portfolio</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
-
-                <!-- Project: The Last of Us Part I -->
-                <div class="card">
-                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=The+Last+of+Us+Part+I" alt="The Last of Us Part I" class="w-full h-56 object-cover opacity-80">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">The Last of Us Part I</h3>
-                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Technical Artist @ PlayStation (Visual Arts)</p>
-                        <p class="text-gray-300">
-                            Contributed to the PS5 remake by developing and maintaining shaders, optimizing performance, and creating pipeline tools. Worked closely with artists to enhance workflows and ensure visual fidelity on next-gen hardware.
-                        </p>
+        <!-- Video Showcase -->
+        <section id="archives" class="mb-32">
+            <h2 class="text-3xl font-bold text-center mb-16 heading-font text-glow">
+                <span class="souls-only">The Great Archive</span>
+                <span class="pro-only">Project Showcases</span>
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="themed-border p-4">
+                    <div class="video-frame mb-4 flex items-center justify-center">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/2E7GnwRG-4I" title="Combat Mechanics Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
+                    <h3 class="text-xl heading-font text-[var(--primary)] mb-2">Combat Mechanics Prototype</h3>
+                    <p class="text-sm text-gray-400">Advanced hit-registration and animation-driven state machine built in Unreal Engine.</p>
                 </div>
-
-                <!-- Project: Diablo IV -->
-                <div class="card">
-                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=Diablo+IV" alt="Diablo IV" class="w-full h-56 object-cover opacity-80">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">Diablo IV</h3>
-                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Build and Pipeline TD @ Blizzard Entertainment</p>
-                        <p class="text-gray-300">
-                            Managed and stabilized game builds for a large, cross-functional team. Developed and maintained crucial pipeline tools using Python and C#, and managed the Jenkins-based build system to ensure a smooth development process.
-                        </p>
+                <div class="themed-border p-4">
+                    <div class="video-frame mb-4 flex items-center justify-center">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/qorRwhFH2BU" title="Brackeys Game Jam Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
+                    <h3 class="text-xl heading-font text-[var(--primary)] mb-2">Game Jam Showcase</h3>
+                    <p class="text-sm text-gray-400">Top Down Dungeon Crawler with Procedural dungeon generation And retro Filter .</p>
                 </div>
-
-                <!-- Project: NASA VR Project -->
-                <div class="card">
-                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=NASA+VR+Project" alt="NASA VR Project" class="w-full h-56 object-cover opacity-80">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">NASA Hybrid Reality System</h3>
-                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Technical Artist @ Carnegie Mellon ETC</p>
-                        <p class="text-gray-300">
-                            Developed a VR training simulation for future astronauts in Unreal Engine 4. Focused on creating realistic materials, shaders, and immersive environments using tools like Substance Painter and Maya.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project: EA Project PAI -->
-                <div class="card">
-                    <img src="https://placehold.co/600x400/0a0a1a/00f6ff?text=Project+PAI" alt="Project PAI" class="w-full h-56 object-cover opacity-80">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-[var(--primary-cyan)]">Project PAI (with Electronic Arts)</h3>
-                        <p class="text-sm font-semibold text-gray-400 mb-4">Role: Lead Engineer @ Carnegie Mellon ETC</p>
-                        <p class="text-gray-300">
-                            Led engineering for a game prototype in Unity. Designed and implemented core gameplay mechanics, AI behaviors, and developed custom editor tools to accelerate design and iteration for the team.
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-16 md:py-24">
-            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Technical Arsenal</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Languages & Shaders</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag">Python</span><span class="skill-tag">C#</span><span class="skill-tag">C++</span><span class="skill-tag">HLSL</span><span class="skill-tag">GLSL</span><span class="skill-tag">MEL</span>
+        <section id="attributes" class="mb-32 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 heading-font text-glow">
+                <span class="souls-only">Primary Attributes</span>
+                <span class="pro-only">Technical Expertise</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+                
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>Unreal Engine</span><span>Intermediate</span>
                     </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 75%;"></div></div>
                 </div>
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Game Engines & Tools</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag">Unreal Engine</span><span class="skill-tag">Unity</span><span class="skill-tag">Jenkins</span><span class="skill-tag">Perforce</span><span class="skill-tag">Git</span><span class="skill-tag">ShotGrid</span>
+
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>Unity Development</span><span>Intermediate</span>
                     </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 70%;"></div></div>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-[var(--primary-magenta)] mb-4 uppercase tracking-widest">Digital Content Creation (DCC)</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag">Maya</span><span class="skill-tag">Houdini</span><span class="skill-tag">Substance Painter</span><span class="skill-tag">Substance Designer</span><span class="skill-tag">ZBrush</span><span class="skill-tag">Photoshop</span>
+
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>Shader Programming (HLSL)</span><span>Knowledgeable</span>
                     </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>Python (DCC Tools)</span><span>Beginner</span>
+                    </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                </div>
+
+                <!-- New Skill 1 -->
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>C++ & C# Scripting</span><span>Intermediate</span>
+                    </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 75%;"></div></div>
+                </div>
+
+                <!-- New Skill 2 -->
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2 text-sm text-[var(--primary)]">
+                        <span>Arts Animation Modeling</span><span>Beginner</span>
+                    </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 20%;"></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience & Education Section -->
-        <section id="experience" class="py-16 md:py-24">
-            <h2 class="text-4xl font-bold text-center mb-16 section-heading mx-auto">Career & Education</h2>
-            <div class="max-w-3xl mx-auto space-y-12 relative border-l-2 border-[var(--border-color)] pl-10">
-                <!-- PlayStation -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Technical Artist</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">-------</p>
-                    <p class="text-sm text-gray-500">Jul 2021 - Present</p>
-                    <p class="mt-2 text-gray-300">Developing and maintaining shaders using HLSL for "The Last of Us Part I". Creating pipeline and DCC tools in Maya with Python/MEL to improve artist workflows. Profiling and optimizing game content to meet performance targets on the PS5.</p>
+        <!-- Education Section -->
+        <section id="origins" class="mb-32">
+            <h2 class="text-3xl font-bold text-center mb-16 heading-font text-glow">
+                <span class="souls-only">Origins & Covenants</span>
+                <span class="pro-only">Academic Background</span>
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-xl heading-font text-white">MSc in Game Technology</h3>
+                    <p class="text-[var(--primary)] font-bold">ICAT Design and Media College</p>
+                    <p class="text-sm italic text-gray-500">Core Focus: Advanced Game Mechanics, Engine Architecture</p>
                 </div>
 
-                <!-- Blizzard -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Build and Pipeline TD</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Blizzard Entertainment</p>
-                    <p class="text-sm text-gray-500">Jan 2021 - Apr 2021</p>
-                    <p class="mt-2 text-gray-300">As a key contributor to "Diablo IV", stabilized game builds, developed crucial pipeline tools using Python and C#, and managed the Jenkins build system to ensure a smooth development process for a large cross-functional team.</p>
+                <div class="timeline-item">
+                    <h3 class="text-xl heading-font text-white">MSc in CyberSecurity</h3>
+                    <p class="text-[var(--primary)] font-bold">University of Hertfordshire</p>
+                    <p class="text-sm italic text-gray-500">Focus on Network Security & Threat Analysis</p>
                 </div>
 
-                <!-- CMU Project Engineer (EA) -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Project Engineer (with EA)</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
-                    <p class="text-sm text-gray-500">Jan 2020 - May 2020</p>
-                    <p class="mt-2 text-gray-300">Led engineering for 'Project PAI', a game prototype in Unity. Implemented core gameplay mechanics, AI behaviors, and developed custom editor tools to accelerate design and iteration.</p>
-                </div>
-                
-                <!-- CMU Technical Artist (NASA) -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Technical Artist (with NASA)</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
-                    <p class="text-sm text-gray-500">Aug 2019 - Dec 2019</p>
-                    <p class="mt-2 text-gray-300">Developed a VR training simulation in Unreal Engine 4 for the NASA Hybrid Reality System. Focused on creating realistic materials and shaders for immersive astronaut training.</p>
-                </div>
-
-                <!-- Carnegie Mellon -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Master of Entertainment Technology</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">Carnegie Mellon University, ETC</p>
-                    <p class="text-sm text-gray-500">2019 - 2021</p>
-                    <p class="mt-2 text-gray-300">Specialized in the Technical Artist track, gaining hands-on experience through industry-sponsored projects with partners like EA and NASA.</p>
-                </div>
-                
-                <!-- NIT Research Intern -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Research Intern</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">National Institute of Technology, Tiruchirappalli</p>
-                    <p class="text-sm text-gray-500">May 2018 - Jul 2018</p>
-                    <p class="mt-2 text-gray-300">Conducted research on mobile robotics, programming path-planning algorithms using C++ and the Robot Operating System (ROS).</p>
-                </div>
-
-                <!-- National Institute of Technology -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Bachelor of Technology</h3>
-                    <p class="font-semibold text-[var(--primary-cyan)] mb-1">National Institute of Technology, Tiruchirappalli</p>
-                    <p class="text-sm text-gray-500">2015 - 2019</p>
-                    <p class="mt-2 text-gray-300">Completed a B.Tech in Instrumentation and Control Engineering, establishing a strong foundation in core engineering principles and robotics.</p>
+                <div class="timeline-item">
+                    <h3 class="text-xl heading-font text-white">BEng in Mechatronics and Electronic Engineering</h3>
+                    <p class="text-[var(--primary)] font-bold">University of Hertfordshire</p>
+                    <p class="text-sm italic text-gray-500">Hardware-Software Integration & Control Systems</p>
                 </div>
             </div>
         </section>
@@ -365,20 +319,38 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-[var(--border-color)]">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
-            <p>&copy; 2024 Tharakeshwar Umanand. All rights reserved.</p>
-            <p class="mt-2">Built with passion and code. Feel free to connect!</p>
-            <div class="mt-4 flex justify-center space-x-6">
-                 <a href="https://www.linkedin.com/in/utharak/" target="_blank" class="text-gray-400 hover:text-[var(--primary-cyan)] transition-colors">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                 </a>
-                 <a href="https://github.com/Utbigboi" target="_blank" class="text-gray-400 hover:text-[var(--primary-cyan)] transition-colors">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.222.687.825.577C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/></svg>
-                 </a>
+    <footer class="border-t border-[var(--primary)]/20 py-12 bg-black transition-colors duration-500">
+        <div class="container mx-auto px-6 text-center">
+            <p class="heading-font text-[var(--primary)] text-sm mb-4">
+                <span class="souls-only">Bearer of the Curse, Seeker of Souls</span>
+                <span class="pro-only">Innovation through Technology and Art</span>
+            </p>
+            <div class="mb-4 flex flex-col items-center gap-1">
+                <a href="mailto:example@email.com" class="text-sm text-gray-400 hover:text-[var(--primary)] transition-colors">
+                    u.tharakeshwar@gmail.com
+                </a>
+                <a href="tel:+1234567890" class="text-sm text-gray-400 hover:text-[var(--primary)] transition-colors">
+                    +91 7348922302
+                </a>
             </div>
+            <p class="text-gray-600 text-xs">© 2026 Tharakeshwar Umanand. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.getElementById('main-body');
+            const label = document.getElementById('theme-label');
+            
+            body.classList.toggle('pro-mode');
+            
+            if (body.classList.contains('pro-mode')) {
+                label.innerText = 'Souls Mode';
+            } else {
+                label.innerText = 'Professional Mode';
+            }
+        }
+    </script>
 
 </body>
 </html>
